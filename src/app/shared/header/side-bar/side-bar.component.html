@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="side-bar-container">
+        <!-- Logo -->
+        <div class="side-bar-header">
+            <div class="logo">
+                <img src="/logo.png" alt="admira-logo" />
+                <span>Admira</span>
+            </div>
+            <button mat-icon-button class="expand-circle">
+                <img src="/expand_circle_down.svg" alt="expand_circle_down" />
+            </button>
+        </div>
+        <!-- Current User Profile -->
+        <div class="user-details">
+            <div class="user-profile">
+                <div (click)="fileInput.click()" class="user-card">
+                    <img [src]="imageSrc" alt="Profile Image" class="profile-image" />
+                    <input type="file" #fileInput (change)="onFileChange($event)" />
+                </div>
+                <span class="user-role">admin</span>
+                <span class="user-mail">{{adminMail}}</span>
+            </div>
+            <div class="user-icons">
+                <mat-icon>person</mat-icon>
+                <mat-icon>edit_square</mat-icon>
+                <mat-icon>task_alt</mat-icon>
+                <mat-icon routerLink="/Login">logout</mat-icon>
+            </div>
+        </div>
+        <!-- Navigations -->
+        <div class="navigations">
+            
+        </div>
+    </div>
+    <div class="nav-bar-header">
+        <app-nav-bar></app-nav-bar>
+    </div>
+</div>

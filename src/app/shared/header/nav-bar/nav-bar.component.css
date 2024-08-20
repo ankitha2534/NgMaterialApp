@@ -1,0 +1,41 @@
+.nav-bar-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid rgb(184, 182, 182);
+}
+
+.menu-icons img{
+    height: 1rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+}
+
+.nav-bar-right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.profile-header img{
+    height: 1.5rem;
+    border-radius: 50%;
+}
+
+.profile-header div{
+    color: black;
+}
+
+.mat-menu-style{
+    background-color: #ffffff;
+}

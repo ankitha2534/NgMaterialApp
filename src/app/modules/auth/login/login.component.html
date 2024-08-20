@@ -1,0 +1,46 @@
+<div class="login-container">
+    <div class="left-auth-main">
+        <img [src]="isLogin?'\bg-01.png' : '\bg-02.png'" alt=""/>
+    </div>
+    <mat-card appearance="outlined">
+        <h6 [ngClass]="isLogin ? 'welcome' : 'sign-up-welcome'">{{isLogin==true ? "Welcome to Admira!":"Sign Up"}}</h6>
+        <h6 [ngClass]="isLogin ? 'title' : 'sign-up-title'">{{isLogin==true ? "Sign in":"Enter details to create your account"}}</h6>
+        <form>
+            <mat-form-field appearance="outline">
+                <mat-label>UserName</mat-label>
+                <div class="username-field">
+                    <input matInput placeholder="">
+                    <mat-icon>face</mat-icon>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Password</mat-label>
+                <div class="password-field">
+                    <input matInput placeholder="">
+                    <mat-icon>visibility</mat-icon>
+                </div>
+            </mat-form-field>
+            <mat-form-field appearance="outline" *ngIf="isLogin == false">
+                <mat-label>ConfirmPassword</mat-label>
+                <div class="password-field">
+                    <input matInput placeholder="">
+                    <mat-icon>visibility</mat-icon>
+                </div>
+            </mat-form-field>
+            <div class="remember">
+                <mat-checkbox class="remember-me">{{isLogin ? 'Remember Me' : 'I have read and agree to the terms of service'}}</mat-checkbox>
+                <a href="/">{{isLogin ? 'Forgot Password?' : ''}}</a>
+            </div>
+            <div class="login-button">
+                <div *ngIf="isLogin==true"><button mat-flat-button>Login</button></div>
+                <div *ngIf="isLogin==false"><button mat-raised-button>Create account</button></div>             
+            </div>
+            <div class="sign-up-msg">
+                {{isLogin ? "Don't have an account?" : 'Already have an account?'}}
+                <a [routerLink]="isLogin ? '/SignUp' : '/Login'">
+                    {{ isLogin ? 'Click here to create one' : 'Login' }}
+                </a>
+            </div>
+        </form>
+    </mat-card>
+</div>

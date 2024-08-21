@@ -13,9 +13,11 @@
         <!-- Current User Profile -->
         <div class="user-details">
             <div class="user-profile">
-                <div (click)="fileInput.click()" class="user-card">
+                <div (click)="fileInput.click()" class="user-card user-block">
                     <img [src]="imageSrc" alt="Profile Image" class="profile-image" />
                     <input type="file" #fileInput (change)="onFileChange($event)" />
+                    <div class="background-hover"></div>
+                    <div class="upload-title">upload</div>
                 </div>
                 <span class="user-role">admin</span>
                 <span class="user-mail">{{adminMail}}</span>
@@ -27,9 +29,52 @@
                 <mat-icon routerLink="/Login">logout</mat-icon>
             </div>
         </div>
+
         <!-- Navigations -->
         <div class="navigations">
-            
+            <!-- Dashboard navigation -->
+            <div class="dashboard-navigation">
+                <div class="nav-header">DASHBOARDS</div>
+                <div class="dashboard-header nav-hover" (click)="ViewSubMenu()">
+                    <div class="dashboard-header-content">
+                        <mat-icon>{{dashboard[0].icon}}</mat-icon>
+                        <span>{{dashboard[0].titleName}}</span>
+                    </div>
+                    <mat-icon>{{dashboard[0].isSubTitleExist ? (isDashboardClicked ? dashboard[0].dropDown2 :
+                        dashboard[0].dropDown1) : ""}}</mat-icon>
+                </div>
+                <div *ngIf="isDashboardClicked && dashboard[0].isSubTitleExist" class="dashboard-submenu">
+                    <div *ngFor="let subtitle of dashboard[0].subtitles" class="dashboard-submenu-item nav-hover">
+                        {{ subtitle }}
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <!-- App navigations -->
+            <div class="app-avigations">
+                <div class="nav-header">APP</div>
+                <div class="main-component" *ngFor="let nav of navigations;let i=index">
+                    <div class="nav-main-header nav-hover" (click)="ViewMainNav(i)">
+                        <div class="nav-header-content">
+                            <mat-icon>{{nav.icon}}</mat-icon>
+                            <span>{{nav.titleName}}</span>
+                        </div>
+                        <mat-icon>{{nav.isSubTitleExist ? (isMainNavClicked[i] ? nav.dropDown2 : nav.dropDown1) :
+                            ""}}</mat-icon>
+                    </div>
+                    
+                </div>
+                  
+            </div>
         </div>
     </div>
     <div class="nav-bar-header">

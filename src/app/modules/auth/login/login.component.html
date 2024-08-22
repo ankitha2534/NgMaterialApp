@@ -32,7 +32,7 @@
                 <a href="/">{{isLogin ? 'Forgot Password?' : ''}}</a>
             </div>
             <div class="login-button">
-                <div *ngIf="isLogin==true"><button mat-flat-button>Login</button></div>
+                <div *ngIf="isLogin==true" routerLink="/Dashboard"><button mat-flat-button>Login</button></div>
                 <div *ngIf="isLogin==false"><button mat-raised-button>Create account</button></div>             
             </div>
             <div class="sign-up-msg">

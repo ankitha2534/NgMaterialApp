@@ -3,11 +3,17 @@
 }
 
 .nav-bar-header {
-    width: 84%;
+    width: 80%;
 }
 
 .side-bar-container {
-    width: 18%;
+    width: 20%;
+}
+
+.user-navigation-content{
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: thin;
 }
 
 .side-bar-header {
@@ -120,7 +126,7 @@
     color: #888b99;
 }
 
-.dashboard-header{
+.dashboard-header,.nav-main-header,.nav-sub-header,.nav-nested-header,.nav-nested-sub-header{
     display: flex;
     justify-content: space-between;
     font-size: 1rem;
@@ -129,12 +135,12 @@
     color: #1a202e;
 }
 
-.dashboard-header mat-icon{
+.dashboard-header mat-icon,.nav-main-header mat-icon{
     margin-right: 1rem;
     font-size: 1.3rem;
 }
 
-.dashboard-header-content{
+.dashboard-header-content,.nav-header-content{
     display: flex;
     align-items: center;
     padding: 0rem 0.5rem;
@@ -147,4 +153,19 @@
 
 .nav-hover:hover{
     background-color: #E4E6F4;
+}
+
+.nav-sub-header{
+    padding: 1rem 1.8rem 1rem 3rem;
+    background-color: #F0F2F6;
+}
+
+.nav-nested-header{
+    padding: 1rem 1.8rem 1rem 4rem;
+    background-color: #F0F2F6;
+}
+
+.nav-nested-sub-header{
+    padding: 1rem 1.8rem 1rem 5rem;
+    background-color: #F0F2F6;
 }

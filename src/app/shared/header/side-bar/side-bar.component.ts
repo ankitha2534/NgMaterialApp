@@ -4,13 +4,12 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { RouterLink } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { RouterLink,RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [CommonModule,NavBarComponent,MatIconModule,MatButtonModule,MatCardModule,RouterLink],
+  imports: [CommonModule,NavBarComponent,MatIconModule,MatButtonModule,MatCardModule,RouterLink,RouterOutlet],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
@@ -20,18 +19,22 @@ export class SideBarComponent {
   isDashboardClicked:boolean=false;
   isMainNavClicked:boolean[]=new Array(15).fill(false);
   isSubNavClicked:boolean[]=new Array(15).fill(false);
-  previousMain:number=0;
-  previousSub:number=0;
+  isNestedNavClicked:boolean[]=new Array(15).fill(false);
+  isNestedSubNavClicked:boolean[]=new Array(15).fill(false);
+  previousMain:number=-1;
+  previousSub:number=-1;
+  previousNestedSub:number=0;
+  previousNestedSub1:number=0;
   count:number=0;
   dashboard = [
     {icon:"airplay",titleName:"Dashboard",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Dashboard 1","Dashboard 2"]}
   ]
-  navigations = [
+  navigations:any[] = [
     {icon:"calendar_today",titleName:"Calendar",isSubTitleExist:false},
-    {icon:'public\trello.png',titleName:"Advance Table",isSubTitleExist:false},
-    {icon:"task_alt",titleName:"Task",badge:"count",isSubTitleExist:false},
+    {icon:"trello.png",titleName:"Advance Table",isSubTitleExist:false},
+    {icon:"task_alt",titleName:"Task",isSubTitleExist:false},
     {icon:"group",titleName:"Contacts",isSubTitleExist:false},
-    {icon:'public\copy.png',titleName:"Material",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
+    {icon:'/copy.png',titleName:"Material",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
       {titleName:"Form Controls",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Auto Complete","Checkbox","DatePicker","FormField","Input","Radio","Select","Slider","Side Toggle"]},
       {titleName:"Navigation",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Menu","SideNav","Toolbar"]},
       {titleName:"Layout",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Card","Divider","ExpansionPanel","Grid List","List","Tab","Tree","Drag & Drop"]},
@@ -49,7 +52,7 @@ export class SideBarComponent {
       {titleName:"Level 1.1",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
         {titleName:"Level 2.1",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
           {titleName:"Level 3.1",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
-            {titleName:"Level 3.1",isSubTitleExist:false}
+            {titleName:"Level 4.1",isSubTitleExist:false}
           ]}
         ]},
         {titleName:"Level 2.2",isSubTitleExist:false}
@@ -83,18 +86,41 @@ export class SideBarComponent {
     }
     else{
       this.isMainNavClicked[i]=true;
+      this.isDashboardClicked=false;
     }
     this.previousMain=i;
   }
   // Method to view sub nav drop down
   ViewSubNav(j:number){
     if(j!=this.previousSub)this.isSubNavClicked=[];
-    if(this.isSubNavClicked[j]==false){
-      this.isSubNavClicked[j]=true;
+    if(this.isSubNavClicked[j]==true){
+      this.isSubNavClicked[j]=false;
     }  
     else{
-      this.isSubNavClicked[j]=false;
+      this.isSubNavClicked[j]=true;
     }
     this.previousSub=j;
+  }
+
+  ViewNestedNav(k:number){
+    if(k!=this.previousNestedSub)this.isNestedNavClicked=[];
+    if(this.isNestedNavClicked[k]==false){
+      this.isNestedNavClicked[k]=true;
+    }  
+    else{
+      this.isNestedNavClicked[k]=false;
+    }
+    this.previousNestedSub=k;
+  }
+
+  ViewNestedSubNav(l:number){
+    if(l!=this.previousNestedSub1)this.isNestedSubNavClicked=[];
+    if(this.isNestedSubNavClicked[l]==false){
+      this.isNestedSubNavClicked[l]=true;
+    }  
+    else{
+      this.isNestedSubNavClicked[l]=false;
+    }
+    this.previousNestedSub1=l;
   }
 }

@@ -31,23 +31,23 @@ export class SideBarComponent {
   ]
   navigations:any[] = [
     {icon:"calendar_today",titleName:"Calendar",isSubTitleExist:false},
-    {icon:"trello.png",titleName:"Advance Table",isSubTitleExist:false},
+    {icon:"table",titleName:"Advance Table",isSubTitleExist:false},
     {icon:"task_alt",titleName:"Task",isSubTitleExist:false},
     {icon:"group",titleName:"Contacts",isSubTitleExist:false},
-    {icon:'/copy.png',titleName:"Material",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
+    {icon:'tab_inactive',titleName:"Material",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
       {titleName:"Form Controls",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Auto Complete","Checkbox","DatePicker","FormField","Input","Radio","Select","Slider","Side Toggle"]},
       {titleName:"Navigation",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Menu","SideNav","Toolbar"]},
       {titleName:"Layout",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Card","Divider","ExpansionPanel","Grid List","List","Tab","Tree","Drag & Drop"]},
       {titleName:"Buttons & Indicators",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Buttons","Button Toggle","Badge","Chips","Progress spinner","Progress bar","Ripple"]},
       {titleName:"Popups & Modals",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Bottom sheet","Dialog","Snack bar","Tooltip"]}
     ]},
-    {icon:'public\layout.svg',titleName:"Forms",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Form Elements","Form Examples","Wizard","Editrs"]},
+    {icon:"view_comfy",titleName:"Forms",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Form Elements","Form Examples","Wizard","Editrs"]},
     {icon:"grid_view",titleName:"Tables",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Basic Table","Filter Table","Pagination Table","Sorting Table","Expandable Table","Column Reorder"]},
-    {icon:'public\chart.svg',titleName:"Charts",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Apexchart","Echart","Chartjs","Ngax-Charts","Guage"]},
+    {icon:'pie_chart',titleName:"Charts",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Apexchart","Echart","Chartjs","Ngax-Charts","Guage"]},
     {icon:'task_alt',titleName:"Widgets",isSubTitleExist:false},
     {icon:"person",titleName:"Profile",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Overview","Settings"]},
-    {icon:'public/usertick.svg',titleName:"Sessions",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["403","404","500"]},
-    {icon:'public\tool.svg',titleName:"Utilities",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["CSS Grid","CSS Helpers"]},
+    {icon:"person_check",titleName:"Sessions",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["403","404","500"]},
+    {icon:'build',titleName:"Utilities",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["CSS Grid","CSS Helpers"]},
     {icon:'keyboard_double_arrow_down',titleName:"Menu",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
       {titleName:"Level 1.1",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[
         {titleName:"Level 2.1",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:[

@@ -4,12 +4,13 @@ import { NavBarComponent } from '../nav-bar/nav-bar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { RouterLink,RouterOutlet } from '@angular/router';
+import { RouterLink,RouterOutlet,ActivatedRoute,Router } from '@angular/router';
+import { Dashboard1Component } from '../../../modules/components/dashboard1/dashboard1.component';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
-  imports: [CommonModule,NavBarComponent,MatIconModule,MatButtonModule,MatCardModule,RouterLink,RouterOutlet],
+  imports: [CommonModule,NavBarComponent,MatIconModule,MatButtonModule,MatCardModule,RouterLink,RouterOutlet,Dashboard1Component],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })
@@ -26,6 +27,9 @@ export class SideBarComponent {
   previousNestedSub:number=0;
   previousNestedSub1:number=0;
   count:number=0;
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute){}
+
   dashboard = [
     {icon:"airplay",titleName:"Dashboard",isSubTitleExist:true,dropDown1:"keyboard_arrow_right",dropDown2:"keyboard_arrow_down",subtitles:["Dashboard 1","Dashboard 2"]}
   ]
@@ -123,4 +127,16 @@ export class SideBarComponent {
     }
     this.previousNestedSub1=l;
   }
+
+  // Method to check current User interaction and navigate to the component  
+  checkAndNavigate(subtitle : string) {
+    if (subtitle === 'Dashboard 1') {
+      this.router.navigate(['/Dashboard/Dashboard1']);
+    } else if (subtitle === 'Dashboard 2') {
+      this.router.navigate(['/Dashboard/Dashboard2']);
+    } else {
+      this.router.navigate(['/Dashboard/Dashboard1']); // Default navigation
+    }
+  }
+
 }

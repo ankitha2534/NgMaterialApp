@@ -1,46 +1,49 @@
 <div class="flex justify-center items-center w-full h-full">
-    <div class="w-full max-sm:hidden">
-        <img [src]="isLogin?'\bg-01.png' : '\bg-02.png'" alt=""/>
+    <div class="flex justify-center items-center w-full max-sm:hidden py-7 px-4 h-full bg-no-repeat bg-center" [ngStyle]="{'background-image': isLogin ? 'url(\bg-01.png)' : 'url(\bg-02.png)'}">
     </div>
-    <mat-card appearance="outlined" class="w-full h-full flex justify-center items-center rounded-none bg-white">
-        <h6 [ngClass]="isLogin ? 'welcome' : 'sign-up-welcome'">{{isLogin==true ? "Welcome to Admira!":"Sign Up"}}</h6>
-        <h6 [ngClass]="isLogin ? 'title' : 'sign-up-title'">{{isLogin==true ? "Sign in":"Enter details to create your account"}}</h6>
-        <form class="flex flex-col gap-2">
-            <mat-form-field appearance="outline">
-                <mat-label>UserName</mat-label>
-                <div class="flex justify-between">
-                    <input matInput placeholder="">
-                    <mat-icon>face</mat-icon>
-                </div>
-            </mat-form-field>
-            <mat-form-field appearance="outline">
-                <mat-label>Password</mat-label>
-                <div class="flex justify-between">
-                    <input matInput placeholder="">
-                    <mat-icon>visibility</mat-icon>
-                </div>
-            </mat-form-field>
-            <mat-form-field appearance="outline" *ngIf="isLogin == false">
-                <mat-label>ConfirmPassword</mat-label>
-                <div class="flex justify-between">
-                    <input matInput placeholder="">
-                    <mat-icon>visibility</mat-icon>
-                </div>
-            </mat-form-field>
-            <div class="flex justify-between items-center mb-2">
-                <mat-checkbox class="no-underline text-xs">{{isLogin ? 'Remember Me' : 'I have read and agree to the terms of service'}}</mat-checkbox>
-                <a href="/">{{isLogin ? 'Forgot Password?' : ''}}</a>
+    <mat-card appearance="outlined" class="flex flex-col border-solid h-full w-full items-center justify-center rounded-none py-8 px-4 max-md:py-4">
+        <mat-card-content class="">
+            <div class="max-w-full max-h-full">
+                <div class="text-xl font-medium leading-8 mb-4 max-sm:text-base">{{isLogin==true ? "Welcome to Admira!":"Sign Up"}}</div>
+                <div [ngClass]="isLogin ? 'text-xl font-semibold mb-4' : 'text-lg font-normal mb-8'" class="leading-8 max-sm:text-base">{{isLogin==true ? "Sign in":"Enter details to create your account"}}</div>
+                <form class="flex flex-col gap-2 justify-center items-center h-full">
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>UserName</mat-label>
+                        <div class="flex justify-between">
+                            <input matInput placeholder="">
+                            <mat-icon>face</mat-icon>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-full">
+                        <mat-label>Password</mat-label>
+                        <div class="flex justify-between">
+                            <input matInput placeholder="">
+                            <mat-icon>visibility</mat-icon>
+                        </div>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" *ngIf="isLogin == false" class="w-full">
+                        <mat-label>ConfirmPassword</mat-label>
+                        <div class="flex justify-between">
+                            <input matInput placeholder="">
+                            <mat-icon>visibility</mat-icon>
+                        </div>
+                    </mat-form-field>
+                    <div class="flex justify-between items-center mb-2 w-full">
+                        <mat-checkbox class="no-underline text-xs">{{isLogin ? 'Remember Me' : 'I have read and agree to the terms of service'}}</mat-checkbox>
+                        <a href="/" class="text-blue-700 text-sm">{{isLogin ? 'Forgot Password?' : ''}}</a>
+                    </div>
+                    <div class="mb-3">
+                        <div *ngIf="isLogin==true" routerLink="/Dashboard/Dashboard1"><button mat-flat-button class="w-25rem  max-sm:w-64">Login</button></div>
+                        <div *ngIf="isLogin==false"><button mat-raised-button class="w-25rem  max-sm:w-64">Create account</button></div>
+                    </div>
+                    <div class="text-0.9rem w-full text-left">
+                        {{isLogin ? "Don't have an account?" : 'Already have an account?'}}
+                        <a [routerLink]="isLogin ? '/SignUp' : '/Login'" class="text-blue-700">
+                            {{ isLogin ? 'Click here to create one' : 'Login' }}
+                        </a>
+                    </div>
+                </form>
             </div>
-            <div class="mb-3">
-                <div *ngIf="isLogin==true" routerLink="/Dashboard"><button mat-flat-button class="w-25rem">Login</button></div>
-                <div *ngIf="isLogin==false"><button mat-raised-button class="w-25rem">Create account</button></div>             
-            </div>
-            <div class="text-0.9rem">
-                {{isLogin ? "Don't have an account?" : 'Already have an account?'}}
-                <a [routerLink]="isLogin ? '/SignUp' : '/Login'">
-                    {{ isLogin ? 'Click here to create one' : 'Login' }}
-                </a>
-            </div>
-        </form>
+        </mat-card-content>
     </mat-card>
 </div>

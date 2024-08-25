@@ -1,29 +1,29 @@
-<div class="container">
-    <div class="side-bar-container">
+<div class="flex">
+    <div class="w-1/5">
         <!-- Logo -->
-        <div class="side-bar-header">
-            <div class="logo">
+        <div class="flex justify-between items-center py-2 border-solid border-b-1px border-border-gray">
+            <div class="flex justify-center items-center gap-4 flex-1">
                 <img src="/logo.png" alt="admira-logo" />
-                <span>Admira</span>
+                <span class="font-500">Admira</span>
             </div>
             <button mat-icon-button class="expand-circle">
-                <img src="/expand_circle_down.svg" alt="expand_circle_down" />
+                <img class="rotate-90" src="/expand_circle_down.svg" alt="expand_circle_down" />
             </button>
         </div>
-        <div class="user-navigation-content">
+        <div class="h-screen overflow-y-scroll scrollbar-thin">
             <!-- Current User Profile -->
-            <div class="user-details">
-                <div class="user-profile">
-                    <div (click)="fileInput.click()" class="user-card user-block">
-                        <img [src]="imageSrc" alt="Profile Image" class="profile-image" />
-                        <input type="file" #fileInput (change)="onFileChange($event)" />
-                        <div class="background-hover"></div>
-                        <div class="upload-title">upload</div>
+            <div class="border-solid border-b-1px border-border-gray">
+                <div class="flex flex-col items-center pt-8 pb-4">
+                    <div (click)="fileInput.click()" class="w-20 h-20 rounded-md shadow-profile outline outline-2 outline-white relative block cursor-pointer">
+                        <img [src]="imageSrc" alt="Profile Image" class="w-20 h-20 rounded-md"/>
+                        <input type="file" #fileInput (change)="onFileChange($event)" class="hidden"/>
+                        <div class="absolute hidden bg-#ffffff80 inset-0 rounded-50% z-1"></div>
+                        <div class="absolute hidden top-1/2 left-1/2 text-sm -translate-x-1/2 -translate-y-1/2 z-2">upload</div>
                     </div>
-                    <span class="user-role">admin</span>
-                    <span class="user-mail">{{adminMail}}</span>
+                    <span class="text-base mt-2">admin</span>
+                    <span class="text-sm mt-2">{{adminMail}}</span>
                 </div>
-                <div class="user-icons">
+                <div class="flex flex-row justify-evenly items-center px-4 mb-4">
                     <mat-icon>person</mat-icon>
                     <mat-icon>edit_square</mat-icon>
                     <mat-icon>task_alt</mat-icon>
@@ -32,75 +32,58 @@
             </div>
 
             <!-- Navigations -->
-            <div class="navigations">
+            <div>
                 <!-- Dashboard navigation -->
-                <div class="dashboard-navigation">
-                    <div class="nav-header">DASHBOARDS</div>
-                    <div class="dashboard-header nav-hover" (click)="ViewSubMenu()">
-                        <div class="dashboard-header-content">
-                            <mat-icon>{{dashboard[0].icon}}</mat-icon>
+                <div>
+                    <div class="text-sm font-500 px-5 pt-4 pb-2 text-#888b99">DASHBOARDS</div>
+                    <div class="nav-hover flex justify-between text-base py-2 px-0.8rem items-center text-#1a202e" (click)="ViewSubMenu()">
+                        <div class="flex items-center px-2">
+                            <mat-icon class="mr-4 text-1.3rem">{{dashboard[0].icon}}</mat-icon>
                             <span>{{dashboard[0].titleName}}</span>
                         </div>
-                        <mat-icon>{{dashboard[0].isSubTitleExist ? (isDashboardClicked ? dashboard[0].dropDown2 :
-                            dashboard[0].dropDown1) : ""}}</mat-icon>
+                        <mat-icon class="mr-4 text-1.3rem">{{dashboard[0].isSubTitleExist ? (isDashboardClicked ? dashboard[0].dropDown2 : dashboard[0].dropDown1) : ""}}</mat-icon>
                     </div>
-                    <div *ngIf="isDashboardClicked && dashboard[0].isSubTitleExist" class="dashboard-submenu">
-                        <div *ngFor="let subtitle of dashboard[0].subtitles" class="dashboard-submenu-item nav-hover">
+                    <div *ngIf="isDashboardClicked && dashboard[0].isSubTitleExist">
+                        <div *ngFor="let subtitle of dashboard[0].subtitles" class="nav-hover py-0.8rem px-16 bg-#F0F2F6" (click)="checkAndNavigate(subtitle)">
                             {{ subtitle }}
                         </div>
                     </div>
                 </div>
                 <!-- App navigations -->
-                <div class="app-avigations">
-                    <div class="nav-header">APP</div>
-                    <div class="main-component" *ngFor="let nav of navigations;let i=index">
-                        <div class="nav-main-header nav-hover" (click)="ViewMainNav(i)">
-                            <div class="nav-header-content">
-                                <mat-icon>{{nav.icon}}</mat-icon>
+                <div>
+                    <div class="text-sm font-500 px-5 pt-4 pb-2 text-#888b99">APP</div>
+                    <div *ngFor="let nav of navigations;let i=index">
+                        <div class="nav-hover flex justify-between text-base py-2 px-0.8rem items-center text-#1a202e" (click)="ViewMainNav(i)">
+                            <div class="flex items-center px-2">
+                                <mat-icon class="mr-4 text-1.3rem">{{nav.icon}}</mat-icon>
                                 <span>{{nav.titleName}}</span>
                             </div>
-                            <mat-icon>{{nav.isSubTitleExist ? (isMainNavClicked[i] ? nav.dropDown2 : nav.dropDown1) :
-                                ""}}</mat-icon>
+                            <mat-icon class="mr-4 text-1.3rem">{{nav.isSubTitleExist ? (isMainNavClicked[i] ? nav.dropDown2 : nav.dropDown1) : ""}}</mat-icon>
                         </div>
 
                         <div *ngIf="nav.isSubTitleExist && isMainNavClicked[i]">
                             <div *ngFor="let subnav of nav.subtitles;let j=index">
-                                <div class="nav-sub-header nav-hover" (click)="ViewSubNav(j)">
+                                <div class="nav-hover flex justify-between text-base items-center text-#1a202e py-4 pr-1.8rem pl-12 bg-#F0F2F6" (click)="ViewSubNav(j)">
                                     <div>{{subnav.titleName ? subnav.titleName : subnav}}</div>
-                                    <mat-icon>{{subnav.isSubTitleExist ? (isSubNavClicked[j] ? subnav.dropDown2 :
-                                        subnav.dropDown1) :
-                                        ""}}</mat-icon>
+                                    <mat-icon>{{subnav.isSubTitleExist ? (isSubNavClicked[j] ? subnav.dropDown2 : subnav.dropDown1) : ""}}</mat-icon>
                                 </div>
                                 <div *ngIf="subnav.isSubTitleExist && isSubNavClicked[j]">
                                     <div *ngFor="let nestednav of subnav.subtitles;let k=index">
-                                        <div class="nav-nested-header nav-hover" (click)="ViewNestedNav(k)">
+                                        <div class="nav-hover flex justify-between text-base items-center text-#1a202e  py-4 pr-1.8rem pl-16 bg-#F0F2F6" (click)="ViewNestedNav(k)">
                                             <div>{{nestednav.titleName ? nestednav.titleName : nestednav}}</div>
-                                            <mat-icon>{{nestednav.isSubTitleExist ? (isNestedNavClicked[k] ?
-                                                nestednav.dropDown2 : nestednav.dropDown1) :
-                                                ""}}</mat-icon>
+                                            <mat-icon>{{nestednav.isSubTitleExist ? (isNestedNavClicked[k] ? nestednav.dropDown2 : nestednav.dropDown1) : ""}}</mat-icon>
                                         </div>
                                         <div *ngIf="nestednav.isSubTitleExist && isNestedNavClicked[k]">
                                             <div *ngFor="let nestedsubnav of nestednav.subtitles;let l=index">
-                                                <div class="nav-nested-sub-header nav-hover"
-                                                    (click)="ViewNestedSubNav(l)">
-                                                    <div>{{nestedsubnav.titleName ? nestedsubnav.titleName :
-                                                        nestedsubnav}}
-                                                    </div>
-                                                    <mat-icon>{{nestedsubnav.isSubTitleExist ? (isNestedSubNavClicked[l]
-                                                        ?
-                                                        nestedsubnav.dropDown2 : nestedsubnav.dropDown1) :
-                                                        ""}}</mat-icon>
+                                                <div class="nav-hover flex justify-between text-base items-center text-#1a202e  py-4 pr-1.8rem pl-20 bg-#F0F2F6" (click)="ViewNestedSubNav(l)">
+                                                    <div>{{nestedsubnav.titleName ? nestedsubnav.titleName : nestedsubnav}}</div>
+                                                    <mat-icon>{{nestedsubnav.isSubTitleExist ? (isNestedSubNavClicked[l] ? nestedsubnav.dropDown2 : nestedsubnav.dropDown1) : ""}}</mat-icon>
                                                 </div>
                                                 <div *ngIf="nestedsubnav.isSubTitleExist && isNestedSubNavClicked[l]">
-                                                    <div
-                                                        *ngFor="let nestedsubnav1 of nestedsubnav.subtitles;let m=index">
-                                                        <div class="nav-nested-sub-header nav-hover">
-                                                            <div>{{nestedsubnav1.titleName ? nestedsubnav1.titleName :
-                                                                nestedsubnav1}}</div>
-                                                            <mat-icon>{{nestedsubnav1.isSubTitleExist ?
-                                                                (isNestedSubNavClicked[l] ?
-                                                                nestedsubnav.dropDown2 : nestedsubnav.dropDown1) :
-                                                                ""}}</mat-icon>
+                                                    <div *ngFor="let nestedsubnav1 of nestedsubnav.subtitles;let m=index">
+                                                        <div class="nav-hover flex justify-between text-base py-2 px-0.8rem items-center text-#1a202e">
+                                                            <div>{{nestedsubnav1.titleName ? nestedsubnav1.titleName : nestedsubnav1}}</div>
+                                                            <mat-icon>{{nestedsubnav1.isSubTitleExist ? (isNestedSubNavClicked[l] ? nestedsubnav.dropDown2 : nestedsubnav.dropDown1) : ""}}</mat-icon>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -109,15 +92,14 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
-    <div class="nav-bar-header">
+    <div class="w-4/5">
         <app-nav-bar></app-nav-bar>
+        <router-outlet></router-outlet>
     </div>
 </div>

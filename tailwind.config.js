@@ -39,14 +39,22 @@ module.exports = {
       backgroundColor:{
         '#ffffff80':'#ffffff80',
         '#F0F2F6' : '#F0F2F6',
+        '#6366f126':'#6366f126',
+        '#fd7e1426' : '#fd7e1426',
       },
       textColor:{
         '#888b99' : '#888b99',
         '#1a202e' : '#1a202e',
+        '#6366f1' : '#6366f1',
+        '#fd7e14' : '#fd7e14',
       },
       padding:{
         '0.8rem' : '0.8rem',
         '1.8rem' : '1.8rem',
+      },
+      borderColor:{
+        '#6366f1' : '#6366f1',
+        '#fd7e14' : '#fd7e14',
       }
     },
   },

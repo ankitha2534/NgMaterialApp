@@ -1,1 +1,16 @@
-<p>dashboard1 works!</p>
+<div class="bg-cyan-50 py-4 px-4">
+    <div class="flex items-center gap-4">
+        <mat-card *ngFor="let item of financialMetrics;let i=index;" class="flex flex-col py-4 px-4 w-full">
+            <div class="flex justify-between items-center">
+                <span>{{item.type}}</span>
+                <span [ngClass]="i%2==0 ? 'bg-#6366f126 text-#6366f1' : 'bg-#fd7e1426 text-#fd7e14'" class="py-1 px-3 rounded text-sm">{{item.period}}</span>
+            </div>
+            <div class="text-xl font-semibold">{{item.ammount}}</div>
+            <mat-card-footer class="flex justify-between items-center mt-4 mb-2">
+                <div>{{item.revenueTitle}}</div>
+                <div>{{item.revenuePercent}}{{item.percent}}</div>
+            </mat-card-footer>
+            <mat-progress-bar [ngClass]="i%2==0 ? 'border-x-#6366f1' : 'border-x-#fd7e14'"  mode="determinate" value={{item.revenuePercent}}></mat-progress-bar>
+        </mat-card>
+    </div>
+</div>
